@@ -26,10 +26,10 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
 - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        appType: 'webApp'
-        WebAppName: 
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        enableCustomDeployment: true
-        DeploymentType: 'webDeploy'
+  inputs:
+    ConnectionType: 'AzureRM'
+    appType: 'webApp'
+    WebAppName: 
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    enableCustomDeployment: true
+    DeploymentType: 'webDeploy'
