@@ -25,7 +25,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
-    - task: AzureRmWebAppDeployment@4
+ - task: AzureRmWebAppDeployment@4
       inputs:
         ConnectionType: 'AzureRM'
         appType: 'webApp'
