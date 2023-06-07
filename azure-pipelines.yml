@@ -17,24 +17,14 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
 
-#- task: Ant@1
-#  inputs:
-#    buildFile: 'build.xml'
-#    options: 
-#    publishJUnitResults: true
-#    testResultsFiles: '**/TEST-*.xml'
-#    javaHomeOption: 'JDKVersion'
+- task: Ant@1
+  inputs:
+    buildFile: 'build.xml'
+    options: 
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
