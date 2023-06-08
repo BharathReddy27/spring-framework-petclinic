@@ -17,20 +17,22 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-
-- task: Ant@1
+- task: Maven@4
   inputs:
-    buildFile: 'build.xml'
-    options: 
+    mavenPomFile: 'pom.xml'
     publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go (9d410db7-7962-4103-9945-4bdda1c06530)'
     appType: 'webApp'
-    WebAppName: 
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    enableCustomDeployment: true
-    DeploymentType: 'webDeploy'
-    
+    WebAppName: 'piowww'
+    packageForLinux: '$(System.DefaultWorkingDirectory)'
+
+- task: PublishBuildArtifacts@1
